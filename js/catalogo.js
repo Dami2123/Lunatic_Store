@@ -1,3 +1,4 @@
+//acá hago el llamado a la información de los productos que se encuentra en un array en main.js y los pongo en un array para trabajarlo
 let productos_ = JSON.parse(localStorage.getItem("lista_productos"));
 let productos = [];
 for (let objeto of productos_) {
@@ -5,36 +6,41 @@ for (let objeto of productos_) {
 }
 
 let carrito_compra = new Carrito();
+// Declaro un objeto carrito y luego, si es que se han agregado articulos y cambiado de página para luego volver a la página catalogo,
+//agrego los productos ya agregados al carrito para que no se reinicie  y se pierda esa información
 let carrito_activo = JSON.parse(localStorage.getItem("carrito_compra"));
-console.log(carrito_activo)
+
 if (carrito_activo != null) {
     let carrito_inicial = Number(carrito_activo.productos.length);
+
     if (carrito_inicial > 0) {
-        console.log("prueba aca")
+
         for (let objeto of carrito_activo.productos) {
             carrito_compra.agregar(objeto.codigo, productos, objeto.cantidad);
-            let claseA= ` .botonA_${objeto.codigo}`
+            let claseA = ` .botonA_${objeto.codigo}`
             let btn_a = document.querySelector(claseA);
             btn_a.innerText = "+";
             btn_a.classList.replace("boton_agregar", "boton_cant");
 
-            let claseB= ` .botonB_${objeto.codigo}`
+            let claseB = ` .botonB_${objeto.codigo}`
             let btn_b = document.querySelector(claseB);
             btn_b.innerText = "-";
             btn_b.classList.replace("boton_borrar", "boton_cant");
 
-            let claseC=` .cant${objeto.codigo}`
+            let claseC = ` .cant${objeto.codigo}`
             let info_cant = document.querySelector(claseC);
             info_cant.innerText = ` ${objeto.cantidad}`
-            
+
         }
     }
 
-    
+
 
 
 }
 
+//acá llamo a los botones "agregar carrito" y declaro el evento para que se agregue los productos y si no hay ya productos agregados que muestre
+//las cantidades y ponga disponible el botón para eliminar cantidades
 let botones_agregar = document.querySelectorAll(".boton_");
 
 botones_agregar.forEach(boton => {
@@ -70,6 +76,7 @@ botones_agregar.forEach(boton => {
 })
 
 
+//aca llamo al botón para eliminar cantidades y declaro el evento para que se resten las cantidad dando al boton "-"
 let botones_borrar = document.querySelectorAll(".boton_b");
 
 
@@ -101,33 +108,3 @@ botones_borrar.forEach(boton => {
     })
 
 })
-
-/*
-
-let carrito_compra = new Carrito();
-
-
-
-    let articulo = lista_productos.find((i) => i.codigo === codigo_venta);
-
-
-    let cantidades_venta = Number(prompt("Cantidad de " + articulo.nombre + ":"));
-
-    carrito_compra.agregar(codigo_venta, cantidades_venta, lista_productos);
-
-let validacion = Number(prompt("Digita 0 para eliminar algun articulo o cualquier caracter para finalizar:"));
-
-while (validacion === 0) {
-    let condigo_eliminar = Number(prompt("Ingresa el codigo del producto a eliminar:"));
-    let articulo = lista_productos.find((i) => i.codigo === condigo_eliminar);
-    if (articulo) {
-        let cantidades_eliminar = Number(prompt("Cantidad de " + articulo.nombre + " a eliminar:"));
-        carrito_compra.eliminar(condigo_eliminar, cantidades_eliminar);   
-    }else{
-    validacion = Number(prompt("El codigo no existe! Ingresa 0 para eliminar algun otro articulo o cualquier caracter para finalizar: :"));
-    }  
-    validacion = Number(prompt("Digita 0 para eliminar otro articulo o cualquier caracter para finalizar:"));
-}
-
-
-*/
