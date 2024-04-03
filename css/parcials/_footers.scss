@@ -1,0 +1,25 @@
+footer {
+  background-color: $color_footer;
+  text-align: center;
+  margin-top: 50px;
+  padding: 7px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+.legal {
+  font-size: 1rem;
+}
+
+.redes {
+  width: 40px;
+  padding: 20px 0;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+  
+  }
+}

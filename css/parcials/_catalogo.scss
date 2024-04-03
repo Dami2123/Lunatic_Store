@@ -1,0 +1,69 @@
+.margen {
+    height: 85px;
+}
+
+.contendorCatalogo {
+    margin: 20px 20px;
+    padding: 10px;
+    background-color: $color_transpa;
+    border: 1px solid $color_transpa;
+    border-radius: 3px;
+    font-weight: 200;
+}
+
+.contendorCatalogo>p{
+    margin: 2px;
+    
+}
+.imgCatalogo {
+    width: 200px;
+}
+
+.contenedorTipo {
+    text-align: center;
+    width: 100%;
+
+    h2 {
+        color: $color_base;
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+}
+
+.precio {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 0.8rem;
+}
+
+.boton_agregar{
+    padding: 2px;
+    background-color: $color_base;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin: 0;   
+
+}
+.boton_cant{
+    padding: 2px;
+    background-color: $color_base;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin: 0 10px ;
+    width: 30px;
+   
+
+}
+
+.cantidad_articulos{
+    padding: 10px;
+    display:inline-flex;
+    align-content: center;
+}
+
+.boton_borrar{
+    display: none;
+}

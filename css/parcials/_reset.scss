@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: $color_fondo;
+    font-family: oswald;
+    position: relative;
+    padding-bottom: 180px;
+   
+}
+
+main {
+    text-align: center;
+    min-height: 100vh;
+    margin-top: 85px;
+    
+}
+∫
+
+h1 {
+    font-size: 1.3rem;
+    font-weight: 200;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}

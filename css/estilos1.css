@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* { 
+margin: 0;
+padding: 0;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: #f1ffff;
+    font-family: oswald;
+    
+}
+
+.logo{
+    width: 200px;
+    text-align: left;
+}
+.menus{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.header {
+   background-color:#f1ffff;
+  
+    height: 100%;
+    
+}
+
+.nave {
+    padding: 0 ;
+    
+}
+
+
+
+@media (max-width: 990px) {
+  
+    .desplegable {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+main{
+    text-align: center; 
+    padding-top: 30px;
+}
+
+.portada{
+    padding: 10px 0;
+    width: 100% ;
+}
+
+
+ul li{
+    text-align: center;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+h1{
+    
+    font-size: 1.2rem;
+    font-weight: 200;
+    
+}
+
+h2{
+    
+    font-size: 1.2rem;
+    font-weight: 400;
+    
+}
+
+
+
+footer{
+   background-color:#5bc7ba69; 
+    text-align: center;
+    margin-top: 50px;
+    padding: 7px 0;
+}
+
+
+.legal{
+    font-size: 1rem;  
+}
+
+.redes {
+    width: 40px ;
+    padding: 20px 0;
+    
+}
+
+.categorias{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contendorCategorias{
+    margin: 10px 20px;
+    padding: 10px ;
+    background-color: #5bc7ba2f;
+    border: 1px solid  #5bc7ba2f;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+.imgCategoria{
+    width: 150px ;
+    
+}
+
+.ubicacion {
+  
+    text-align: center;
+}
+
+.direccion{
+    font-size: 0.9rem;
+    font-weight: 200;
+    
+}
+
+iframe{
+    padding: 20px;
+    width: 500px;
+      
+}
+
+@media (max-width: 600px) {
+    iframe{
+        padding: 20px;
+        width: 400px;
+          
+    }
+}
+
+form{
+    padding: 20px ;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    background-color: #d1b3b36a;
+    border-radius: 10px;
+
+
+}
+
+@media (max-width: 900px) {
+    form{
+        width: 70%;
+    }
+    
+}
+@media (max-width: 600px) {
+    form{
+        width: 70%;
+        grid-template-columns: 1fr ;
+
+    }
+    
+}
+
+.formulario{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 70px 0;
+    width: 100%;
+
+    }
+
+.formInputs{
+    margin-right: 20px;
+    margin-top: 25px;
+    padding-right: 20px ;
+    width: 100%;
+    ;
+    
+    }
+   
+    
+
+ .textinput{
+    display: flex;
+   justify-content: center;
+    flex-direction: column;
+    }
+
+label{
+    margin-left: 30px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
+    display: block;
+    
+}
+
+input{
+    margin-left: 30px;
+    padding: 5px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    color: black;
+    font-weight: 100;
+    display: block;
+    width: 85%;
+    border-radius: 5px;
+    border: 1px solid #FCFFFF;
+    
+}
+
+textarea{
+    margin:0 30px;
+    font-size: 1rem;
+    font-weight: 100;
+    color: black;
+    display: block;
+    width: 85%;
+    height: 170px;
+    border-radius: 7px;
+    border: 1px solid #FCFFFF;
+}
+
+
+button{
+    font-size: 1.2rem;
+    font-family: oswald;
+    font-weight: 400;
+    background-color: #5bc7ba51;
+    border: 1px solid  #5bc7ba20;
+    border-radius: 3px;
+    padding: 0px 5px;
+    margin-top: 20px;
+    width: 100px;
+}
+
+.contenedorNosotros{
+    
+    margin: 40px 10px;
+    padding: 10px ;
+    width: 250px ;
+    text-align: justify;
+    background-color: #d1b3b36a;
+}
+
+
+
+.imgNosotros{
+    width: 250px ;
+}
+
+.contendorCatalogo{
+    margin: 20px 20px;
+    padding: 10px ;
+    background-color: #5bc7ba2f;
+    border: 1px solid  #5bc7ba2f;;
+    border-radius: 3px;
+    font-weight: 200;
+
+}
+
+.imgCatalogo{
+    width: 200px ;
+}
+.contenedorTipo{
+    margin-top: 40px;
+    text-align: center;
+    width:  100%;
+    
+    
+}
+.precio{
+    font-weight: 400;
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+.contenedorTipo>h2{
+    color: #5bc7ba;
+    font-weight: 500;
+    font-size: 1.4rem;
+}

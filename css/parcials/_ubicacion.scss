@@ -1,0 +1,21 @@
+.ubicacion {
+  margin-top: 130px;
+  text-align: center;
+}
+
+.direccion {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+iframe {
+  padding: 20px;
+  width: 500px;
+}
+
+@media (max-width: 600px) {
+  iframe {
+    padding: 20px;
+    width: 370px;
+  }
+}
