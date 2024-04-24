@@ -72,8 +72,11 @@ if (productos.length > 0) {
 }
 
 //aca se declara el evento para que se vacie el carrito con el boton vaciar y se muestra el mensaje de carrito vacío
+
 vaciar.addEventListener("click", () => {
   localStorage.removeItem("carrito_compra")
+  localStorage.removeItem("cantidades")
+  num_contador.classList.replace("contador","contador_inicial");
   carritoProductos.innerHTML = `
                                         <div>
                                         <img  src="../img/carro.png">
