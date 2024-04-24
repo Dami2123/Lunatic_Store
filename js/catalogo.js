@@ -1,45 +1,50 @@
-//acá hago el llamado a la información de los productos que se encuentra en un array en main.js y los pongo en un array para trabajarlo
-let productos_ = JSON.parse(localStorage.getItem("lista_productos"));
+
+/*
+Aca hago el llamado a al json con la información del catalogo y la hago uso de ella llamando a la funcion AgregarCarrito
+*/
 let productos = [];
-for (let objeto of productos_) {
-    productos.push(new Producto_tipo(objeto.codigo, objeto.nombre, objeto.precio, objeto.categoria, objeto.imagen));
-}
+let respuesta = fetch("../js/catalogo.json").then( (response) => response.json())
+ .then( (data) => {
+        productos=data;
+        AgregarCarrito(productos); 
+            
+    })
 
-let carrito_compra = new Carrito();
-// Declaro un objeto carrito y luego, si es que se han agregado articulos y cambiado de página para luego volver a la página catalogo,
-//agrego los productos ya agregados al carrito para que no se reinicie  y se pierda esa información
-let carrito_activo = JSON.parse(localStorage.getItem("carrito_compra"));
 
-if (carrito_activo != null) {
-    let carrito_inicial = Number(carrito_activo.productos.length);
+//acá  declaro la funcion l "AgregarCarrito" que se usará dentro del fetch
+function AgregarCarrito(productosCatalogo){
 
-    if (carrito_inicial > 0) {
-
-        for (let objeto of carrito_activo.productos) {
-            carrito_compra.agregar(objeto.codigo, productos, objeto.cantidad);
-            let claseA = ` .botonA_${objeto.codigo}`
-            let btn_a = document.querySelector(claseA);
-            btn_a.innerText = "+";
-            btn_a.classList.replace("boton_agregar", "boton_cant");
-
-            let claseB = ` .botonB_${objeto.codigo}`
-            let btn_b = document.querySelector(claseB);
-            btn_b.innerText = "-";
-            btn_b.classList.replace("boton_borrar", "boton_cant");
-
-            let claseC = ` .cant${objeto.codigo}`
-            let info_cant = document.querySelector(claseC);
-            info_cant.innerText = ` ${objeto.cantidad}`
-
+    let carrito_compra = new Carrito();
+    // Declaro un objeto carrito y luego, si es que se han agregado articulos y cambiado de página para luego volver a la página catalogo,
+    //agrego los productos ya agregados al carrito para que no se reinicie  y se pierda esa información
+    let carrito_activo = JSON.parse(localStorage.getItem("carrito_compra"));
+    if (carrito_activo != null) {
+        let carrito_inicial = Number(carrito_activo.productos.length);
+    
+        if (carrito_inicial > 0) {
+    
+            for (let objeto of carrito_activo.productos) {
+                carrito_compra.agregar(objeto.codigo, productos, objeto.cantidad);
+                let claseA = ` .botonA_${objeto.codigo}`
+                let btn_a = document.querySelector(claseA);
+                btn_a.innerText = "+";
+                btn_a.classList.replace("boton_agregar", "boton_cant");
+    
+                let claseB = ` .botonB_${objeto.codigo}`
+                let btn_b = document.querySelector(claseB);
+                btn_b.innerText = "-";
+                btn_b.classList.replace("boton_borrar", "boton_cant");
+    
+                let claseC = ` .cant${objeto.codigo}`
+                let info_cant = document.querySelector(claseC);
+                info_cant.innerText = ` ${objeto.cantidad}`
+    
+            }
         }
+    
     }
 
-
-
-
-}
-
-//acá llamo a los botones "agregar carrito" y declaro el evento para que se agregue los productos y si no hay ya productos agregados que muestre
+//Aca declaro el evento para que se agregue nlos productos  llamando a botones_agregar y si no hay ya productos agregados que muestre
 //las cantidades y ponga disponible el botón para eliminar cantidades
 let botones_agregar = document.querySelectorAll(".boton_");
 
@@ -50,6 +55,23 @@ botones_agregar.forEach(boton => {
         console.log(articulo.codigo)
         carrito_compra.agregar(articulo.codigo, productos, 1);
         let cantidades = carrito_compra.cantidad(articulo.codigo)
+
+        Toastify({
+            text: ` ${articulo.nombre} fue AGREGADO correctamente!`,
+            duration: 3000,
+            destination: "../html/carrito.html",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "toasti",
+            offset: {
+                x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                y: 90 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+              },
+            onClick: function(){} // Callback after click
+          }).showToast();
 
         console.log(cantidades)
         if (cantidades > 0) {
@@ -86,6 +108,23 @@ botones_borrar.forEach(boton => {
         let articulo = productos.find(i => i.codigo === Number(btn.currentTarget.id))
         carrito_compra.eliminar(articulo.codigo);
         let cantidades = carrito_compra.cantidad(articulo.codigo)
+        Toastify({
+            text: ` ${articulo.nombre} fue ELIMINADO correctamente!`,
+            duration: 3000,
+            destination: "../html/carrito.html",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "toasti",
+            offset: {
+                x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                y: 90 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+              },
+            onClick: function(){} // Callback after click
+          }).showToast();
+
         let clase_cant = ` .cant${btn.currentTarget.id}`
         let div_cant = document.querySelector(clase_cant);
         if (cantidades > 0) {
@@ -108,3 +147,4 @@ botones_borrar.forEach(boton => {
     })
 
 })
+}

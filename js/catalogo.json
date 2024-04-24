@@ -1,0 +1,74 @@
+[
+    { "codigo": 100,
+    "nombre": "Chaqueta de cuero y piel",
+    "precio": 62000,
+    "categoria": "Chaquetas",
+    "imagen": "../img/catalogo/ch1.png"
+    },
+    { "codigo": 101,
+    "nombre": "Chaqueta abotonada casual",
+    "precio": 35000,
+    "categoria": "Chaquetas",
+    "imagen": "../img/catalogo/ch2.png"
+    },
+    { "codigo": 102,
+    "nombre": "Chaqueta bohemia flecos",
+    "precio": 47000,
+    "categoria": "Chaquetas",
+    "imagen": "../img/catalogo/ch3.png"
+    },
+    { "codigo": 103,
+    "nombre": "Pantalón casual azul",
+    "precio": 22000,
+    "categoria": "Pantalones y Shorts",
+    "imagen": "../img/catalogo/p2.png"
+    },
+    { "codigo": 104,
+    "nombre": "Short jean bicolor",
+    "precio": 25000,
+    "categoria": "Pantalones y Shorts",
+    "imagen": "../img/catalogo/s1.png"
+    },
+    { "codigo": 105,
+    "nombre": "Pantalón negro lentejuelas",
+    "precio": 30000,
+    "categoria": "Pantalones y Shorts",
+    "imagen": "../img/catalogo/p1.png"
+    },
+    { "codigo": 106,
+    "nombre": "Polera Metalica rosa",
+    "precio": 15000,
+    "categoria": "Tops",
+    "imagen": "../img/catalogo/po1.png"
+    },
+    { "codigo": 107,
+    "nombre": "Top verde ajustable",
+    "precio": 12000,
+    "categoria": "Tops",
+    "imagen": "../img/catalogo/po2.jpeg"
+    },
+    { "codigo": 108,
+    "nombre": "Polera acordonada",
+    "precio": 16000,
+    "categoria": "Tops",
+    "imagen": "../img/catalogo/po3.png"
+    },
+    { "codigo": 109,
+    "nombre": "Vestido yin yang",
+    "precio": 35000,
+    "categoria": "Vestidos y Faldas",
+    "imagen": "../img/catalogo/v1 (2).png"
+    },
+    { "codigo": 110,
+    "nombre": "Falda lentejuelas doradas",
+    "precio": 20000,
+    "categoria": "Vestidos y Faldas",
+    "imagen": "../img/catalogo/f1.png"
+    },
+    { "codigo": 111,
+    "nombre": "Conjunto entero top-falda",
+    "precio": 40000,
+    "categoria": "Vestidos y Faldas",
+    "imagen": "../img/catalogo/v3.png"
+    }
+]

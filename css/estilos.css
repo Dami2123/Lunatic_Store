@@ -431,6 +431,16 @@ button {
   display: none;
 }
 
+.toasti {
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 0.9rem;
+  background: rgba(91, 199, 186, 0.7019607843);
+  color: black;
+  border-radius: 10px;
+}
+
 .contenedor_productos {
   display: flex;
   flex-wrap: wrap;
