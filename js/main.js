@@ -49,6 +49,16 @@ class Carrito {
         this.total = nuevo_total;
     }
 
+    cantidadTotal(){
+        let cant_total= 0;
+
+        this.productos.forEach(producto => {
+            cant_total += producto.cantidad
+        })
+
+        return cant_total;
+    }
+
     agregar(codigo_producto, catalogo, cantidad) {
         ;
         const existencia = this.productos.find((i) => i.codigo === codigo_producto);
@@ -74,6 +84,7 @@ class Carrito {
         }
 
         this.actualizarTotal();
+        this.cantidadTotal()
     }
 
 
@@ -99,6 +110,7 @@ class Carrito {
 
 
         this.actualizarTotal();
+        this.cantidadTotal()
 
     }
 
@@ -121,6 +133,8 @@ class Carrito {
         }
         return articulo.cantidad
     }
+
+    
 
 }
 

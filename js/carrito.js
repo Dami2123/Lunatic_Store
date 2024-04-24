@@ -4,6 +4,18 @@ let conte_total = document.querySelector(".contenedor_total_inicial");
 let valor_total = document.querySelector(".valor_total");
 let vaciar = document.querySelector(".vaciar")
 
+let contador =0;
+let num_contador = document.querySelector(".cnt");
+let cont=localStorage.getItem("cantidades");
+console.log("cuenta"+cont)
+if (cont!=null) {
+    contador= Number(cont);
+    num_contador.classList.replace("contador_inicial", "contador");
+    num_contador.innerText = ` ${contador}`;
+    
+}
+
+
 //acá declaro un array vacío por si hay algún inconveniente en llamar al elemento carrito_compra desde localShortage
 let productos_ = [];
 //luego llamo a la información de lo productos agregados al carrito

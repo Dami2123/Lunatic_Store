@@ -70,6 +70,21 @@
 }
 
 
+.contador_inicial{
+   display: none;
+    
+    
+}
+.contador{
+    background-color: $color_base;
+    border-radius:60px;
+    padding: 0 6px;
+    margin: 0 2px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color:white;
+    
+}
 
 .desplegable {
     background-color: $color_menu;
