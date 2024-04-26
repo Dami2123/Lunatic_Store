@@ -532,4 +532,8 @@ button {
 
 .valor_total {
   margin: 0;
+}
+
+.cambio_cant {
+  display: inline-flex;
 }/*# sourceMappingURL=estilos.css.map */

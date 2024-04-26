@@ -1,29 +1,31 @@
-
 /*
 Aca hago el llamado a al json con la información del catalogo y la hago uso de ella llamando a la funcion AgregarCarrito
 */
-let productos = [];
-let respuesta = fetch("../js/catalogo.json").then((response) => response.json())
+let productosCatalogo = [];
+fetch("../js/catalogo.json").then((response) => response.json())
     .then((data) => {
-        productos = data;
-        AgregarCarrito(productos);
-
+        productosCatalogo = data;
+        AgregarCarrito(productosCatalogo);
     })
 
 
 //acá  declaro la funcion l "AgregarCarrito" que se usará dentro del fetch
-function AgregarCarrito(productosCatalogo) {
-    let contador =0;
+function AgregarCarrito(productos) {
+    //actualiza el contador del icono carrito
+    let contador = 0;
     let num_contador = document.querySelector(".cnt");
-    let cont=localStorage.getItem("cantidades");
-    console.log("cuenta"+cont)
-    if (cont!=null) {
-        contador= Number(cont);
+    let cont = localStorage.getItem("cantidades");
+
+    if (cont != null) {
+        contador = Number(cont);
         num_contador.classList.replace("contador_inicial", "contador");
         num_contador.innerText = ` ${contador}`;
-        
+
     }
- 
+    if (contador === 0) {
+        num_contador.classList.replace("contador", "contador_inicial")
+    }
+
 
     let carrito_compra = new Carrito();
     // Declaro un objeto carrito y luego, si es que se han agregado articulos y cambiado de página para luego volver a la página catalogo,
@@ -63,51 +65,53 @@ function AgregarCarrito(productosCatalogo) {
 
         boton.addEventListener("click", (btn) => {
             let articulo = productos.find(i => i.codigo === Number(btn.currentTarget.id))
-            console.log(articulo.codigo)
+
             carrito_compra.agregar(articulo.codigo, productos, 1);
             let cantidades = carrito_compra.cantidad(articulo.codigo)
+
+            //aca llevo el contador de los productos que se verán en el icono carrito
             contador = carrito_compra.cantidadTotal()
-            console.log("cont; " + contador)
-            if (contador>0) {
+            if (contador > 0) {
                 num_contador.classList.replace("contador_inicial", "contador");
             }
             num_contador.innerText = ` ${contador}`;
+
+           //Uso de la librería Toastify para anunciar que se agregue un producto al carrito
             Toastify({
                 text: ` ${articulo.nombre} fue AGREGADO correctamente!`,
                 duration: 3000,
                 destination: "../html/carrito.html",
                 newWindow: true,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "center", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top",
+                position: "center",
+                stopOnFocus: true,
                 className: "toasti",
                 offset: {
-                    x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                    y: 90 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                    x: 0,
+                    y: 90 
                 },
-                onClick: function () { } // Callback after click
+                onClick: function () { } 
             }).showToast();
 
-            console.log(cantidades)
+
             if (cantidades > 0) {
                 btn.currentTarget.innerText = "+"
-                console.log(btn.currentTarget.innerText)
+
                 btn.currentTarget.classList.replace("boton_agregar", "boton_cant")
                 let clase_cant = ` .cant${btn.currentTarget.id}`
                 let div_cant = document.querySelector(clase_cant);
-                console.log("cantidades que sta borrando" + clase_cant)
-                console.log("cantidades: " + cantidades)
+
                 div_cant.innerText = ` ${cantidades}`
 
-                console.log("id borrar carrito:" + btn.currentTarget.id)
+
                 let clase_btnB = ` .botonB_${btn.currentTarget.id}`
                 let btn_eliminar = document.querySelector(clase_btnB);
                 btn_eliminar.innerText = "-";
                 btn_eliminar.classList.replace("boton_borrar", "boton_cant")
             }
 
-            console.log(carrito_compra.productos.length)
+
             localStorage.setItem('carrito_compra', JSON.stringify(carrito_compra));
             localStorage.setItem('cantidades', contador);
         })
@@ -126,8 +130,8 @@ function AgregarCarrito(productosCatalogo) {
             carrito_compra.eliminar(articulo.codigo);
             let cantidades = carrito_compra.cantidad(articulo.codigo)
             contador = carrito_compra.cantidadTotal()
-            if (contador===0) {
-                num_contador.classList.replace("contador","contador_inicial");
+            if (contador === 0) {
+                num_contador.classList.replace("contador", "contador_inicial");
             }
             num_contador.innerText = ` ${contador}`;
             Toastify({
@@ -136,15 +140,15 @@ function AgregarCarrito(productosCatalogo) {
                 destination: "../html/carrito.html",
                 newWindow: true,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "center", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top", 
+                position: "center", 
+                stopOnFocus: true, 
                 className: "toasti",
                 offset: {
-                    x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                    y: 90 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                    x: 0, 
+                    y: 90 
                 },
-                onClick: function () { } // Callback after click
+                onClick: function () { } 
             }).showToast();
 
             let clase_cant = ` .cant${btn.currentTarget.id}`
@@ -153,22 +157,25 @@ function AgregarCarrito(productosCatalogo) {
                 div_cant.innerText = ` ${cantidades}`
 
             } else {
-                console.log("id agrgar carrito:" + btn.currentTarget.id)
+
                 let clase_btnA = ` .botonA_${btn.currentTarget.id}`
                 let btn_agregar = document.querySelector(clase_btnA);
                 btn_agregar.innerText = "Agregar al carrito"
-                console.log(btn.currentTarget.innerText)
+
                 btn_agregar.classList.replace("boton_cant", "boton_agregar")
                 div_cant.innerText = ""
 
                 btn.currentTarget.classList.replace("boton_cant", "boton_borrar")
             }
+            if (contador === 0) {
+                num_contador.classList.replace("contador", "contador_inicial");
+            }
 
-            console.log(carrito_compra.productos.length)
             localStorage.setItem('carrito_compra', JSON.stringify(carrito_compra));
             localStorage.setItem('cantidades', contador);
         })
 
     })
+
     
 }

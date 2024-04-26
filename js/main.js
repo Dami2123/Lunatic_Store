@@ -16,20 +16,6 @@ function Producto_carrito(codigo, nombre, cantidad, precio_unit, precio_total_ca
     this.precio_total_cant = precio_total_cant;
     this.imagen = imagen;
 }
-let lista_productos = [
-    new Producto_tipo(100, "Chaqueta de cuero y piel", 62000, "Chaquetas", "../img/catalogo/ch1.png"),
-    new Producto_tipo(101, "Chaqueta abotonada casual", 35000, "Chaquetas", "../img/catalogo/ch2.png"),
-    new Producto_tipo(102, "Chaqueta bohemia flecos", 47000, "Chaquetas", "../img/catalogo/ch3.png"),
-    new Producto_tipo(103, "Pantalón casual azul", 22000, "Pantalones y Shorts", "../img/catalogo/p2.png"),
-    new Producto_tipo(104, "Short jean bicolor", 25000, "Pantalones y Shorts", "../img/catalogo/s1.png"),
-    new Producto_tipo(105, "Pantalón negro lentejuelas", 30000, "Pantalones y Shorts", "../img/catalogo/p1.png"),
-    new Producto_tipo(106, "Polera Metalica rosa", 15000, "Tops", "../img/catalogo/po1.png"),
-    new Producto_tipo(107, "Top verde ajustable", 12000, "Tops", "../img/catalogo/po2.jpeg"),
-    new Producto_tipo(108, "Polera acordonada", 16000, "Tops", "../img/catalogo/po3.png"),
-    new Producto_tipo(109, "Vestido yin yang", 35000, "Vestidos y Faldas", "../img/catalogo/v1 (2).png"),
-    new Producto_tipo(110, "Falda lentejuelas doradas", 20000, "Vestidos y Faldas", "../img/catalogo/f1.png"),
-    new Producto_tipo(111, "Conjunto entero top-falda", 40000, "Vestidos y Faldas", "../img/catalogo/v3.png")
-]
 
 class Carrito {
     constructor() {
@@ -95,9 +81,7 @@ class Carrito {
         }
         let articulo = this.productos.find((i) => i.codigo === codigo_producto);
 
-        if (!articulo) {
-            return alert("Este producto no se encuentra actualmente en el carrito!!!")
-        }
+
         if (cantidad >= articulo.cantidad) {
             let ubicacion = this.productos.indexOf(articulo);
             this.productos.splice(ubicacion, 1);
@@ -138,8 +122,5 @@ class Carrito {
 
 }
 
-
-
-localStorage.setItem('lista_productos', JSON.stringify(lista_productos));
 
 
